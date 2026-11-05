@@ -25,3 +25,44 @@ model User {
 
   @@map("users")
 }
+
+enum PersonType {
+  PF
+  PJ
+}
+
+model Customer {
+  id        String     @id @default(uuid())
+  name      String
+  document  String     @unique
+  type      PersonType @default(PJ)
+  email     String?
+  phone     String?
+  address   String?
+  city      String?
+  state     String?
+  active    Boolean    @default(true)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("customers")
+}
+
+model Supplier {
+  id          String     @id @default(uuid())
+  companyName String // Razão Social
+  tradeName   String? // Nome Fantasia
+  document    String     @unique // CNPJ ou CPF
+  type        PersonType @default(PJ)
+  email       String?
+  phone       String?
+  contact     String? // Nome do contacto principal/vendedor
+  address     String?
+  city        String?
+  state       String?
+  active      Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("suppliers")
+}

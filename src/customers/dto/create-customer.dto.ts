@@ -1,4 +1,4 @@
-import { IsString, IsEmail, IsOptional, IsEnum, IsBoolean, IsNotEmpty } from 'class-validator';
+import { IsString, IsEmail, IsOptional, IsEnum, IsBoolean, IsNotEmpty, MaxLength } from 'class-validator';
 import { PersonType } from '@prisma/client';
 
 export class CreateCustomerDto {
@@ -37,4 +37,9 @@ export class CreateCustomerDto {
     @IsBoolean()
     @IsOptional()
     active?: boolean;
+
+    @IsOptional()
+    @IsString()
+    @MaxLength(500)
+    notes?: string;
 }

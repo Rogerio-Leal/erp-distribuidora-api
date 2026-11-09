@@ -41,6 +41,7 @@ model Customer {
   address   String?
   city      String?
   state     String?
+  notes     String?
   active    Boolean    @default(true)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -50,16 +51,17 @@ model Customer {
 
 model Supplier {
   id          String     @id @default(uuid())
-  companyName String // Razão Social
-  tradeName   String? // Nome Fantasia
-  document    String     @unique // CNPJ ou CPF
+  companyName String
+  tradeName   String?
+  document    String     @unique
   type        PersonType @default(PJ)
   email       String?
   phone       String?
-  contact     String? // Nome do contacto principal/vendedor
+  contact     String?
   address     String?
   city        String?
   state       String?
+  notes       String?
   active      Boolean    @default(true)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
